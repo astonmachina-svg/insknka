@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Love Calculator ❤️ Find Your Compatibility</title>
+  <meta name="description"
+    content="Calculate romantic love compatibility with our aesthetic Love Calculator. Discover your cosmic score!">
+
+  <!-- Google Fonts: Poppins & Dancing Script -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- Ambient floating hearts background -->
+  <div class="ambient-background" aria-hidden="true">
+    <span class="ambient-heart h1">💖</span>
+    <span class="ambient-heart h2">💕</span>
+    <span class="ambient-heart h3">✨</span>
+    <span class="ambient-heart h4">💗</span>
+    <span class="ambient-heart h5">💓</span>
+    <span class="ambient-heart h6">🌸</span>
+    <span class="ambient-heart h7">💘</span>
+    <span class="ambient-heart h8">✨</span>
+  </div>
+
+  <!-- Special Monthsary Modal Backdrop -->
+  <div id="modal-backdrop" class="modal-backdrop hidden" aria-hidden="true"></div>
+
+  <!-- Fullscreen Heart Fireworks Canvas -->
+  <canvas id="fireworks-canvas" aria-hidden="true"></canvas>
+
+  <main class="page-wrapper">
+    <div class="calculator-card" id="calculator-card">
+
+      <!-- Card Header -->
+      <header class="card-header">
+        <div class="header-badge" aria-hidden="true">
+          <span class="header-icon">💘</span>
+        </div>
+        <h1 class="card-title">Love Calculator</h1>
+        <p class="card-subtitle">Discover the destiny written in your names</p>
+      </header>
+
+      <!-- Input Form -->
+      <form id="love-form" class="calculator-form" onsubmit="return false;" novalidate>
+        <div class="input-group">
+          <label for="name1" class="input-label">Enter your name</label>
+          <div class="input-wrapper">
+            <span class="input-icon" aria-hidden="true">👤</span>
+            <input type="text" id="name1" class="name-input" placeholder="e.g. name" autocomplete="off"
+              spellcheck="false" maxlength="40">
+          </div>
+        </div>
+
+        <div class="connector-heart" aria-hidden="true" title="Together">
+          <span class="heart-pulse">❤️</span>
+        </div>
+
+        <div class="input-group">
+          <label for="name2" class="input-label">Enter your lover's name</label>
+          <div class="input-wrapper">
+            <span class="input-icon" aria-hidden="true">👤</span>
+            <input type="text" id="name2" class="name-input" placeholder="e.g. name" autocomplete="off"
+              spellcheck="false" maxlength="40">
+          </div>
+        </div>
+
+        <button type="button" id="calculate-btn" class="calculate-btn">
+          <span class="btn-text">Calculate Love</span>
+          <span class="btn-sparkle" aria-hidden="true">✨</span>
+        </button>
+      </form>
+
+      <!-- Validation Error Message -->
+      <div id="validation-message" class="validation-message hidden" role="alert">
+        <span class="alert-icon" aria-hidden="true">⚠️</span>
+        <span id="validation-text">Please enter both names</span>
+      </div>
+
+      <!-- Result Area -->
+      <section id="result-area" class="result-area hidden" aria-live="polite">
+        <div class="result-divider" aria-hidden="true">
+          <span class="divider-line"></span>
+          <span class="divider-icon">💖</span>
+          <span class="divider-line"></span>
+        </div>
+
+        <div class="score-container" id="score-container">
+          <div class="score-badge" id="score-badge">
+            <span class="score-number" id="score-display">--</span>
+          </div>
+
+          <div class="score-meter" id="score-meter" aria-hidden="true">
+            <div class="score-bar" id="score-bar"></div>
+          </div>
+        </div>
+
+        <div class="message-container">
+          <h2 class="result-title" id="result-title">Love Affinity</h2>
+          <p class="result-message" id="result-message"></p>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Special Monthsary Celebration Modal Popup -->
+  <div id="monthsary-modal" class="modal-container hidden" role="dialog" aria-modal="true"
+    aria-labelledby="monthsary-title">
+    <div class="modal-card">
+      <button type="button" class="modal-close-btn" id="modal-close-btn" aria-label="Close celebration popup">✕</button>
+
+      <div class="modal-header-decor" aria-hidden="true">
+        <span class="modal-sparkle sp-1">✨</span>
+        <span class="modal-sparkle sp-2">💖</span>
+        <div class="modal-badge-icon">
+          <span class="modal-emoji-icon">💍</span>
+        </div>
+        <span class="modal-sparkle sp-3">💕</span>
+        <span class="modal-sparkle sp-4">✨</span>
+      </div>
+
+      <div class="modal-pill-tag">
+        <span class="pill-sparkle">✨</span>
+        <span>SPECIAL MILESTONE &bull; 7 MONTHS OF LOVE</span>
+        <span class="pill-sparkle">✨</span>
+      </div>
+
+      <h2 id="monthsary-title" class="modal-title">HAPPY 7TH MONTHSARY, MY BELOVED HONEY!!</h2>
+
+      <div class="modal-infinity-box">
+        <div class="modal-infinity-badge special-infinity" aria-hidden="true">
+          <span class="modal-infinity-number">∞</span>
+        </div>
+        <div class="modal-infinity-details">
+          <span class="modal-infinity-label">Cosmic Affinity: Infinite Love</span>
+          <div class="modal-meter" aria-hidden="true">
+            <div class="modal-meter-bar special-full"></div>
+          </div>
+          <span class="modal-infinity-note">Written in the stars forever ✨</span>
+        </div>
+      </div>
+
+      <div class="modal-message">
+        <p>Honey, I am truly sorry for being an idiot sometimes. I am sorry for getting jealous so easily and for
+          allowing my overthinking to get the better of me. I always try my best not to overthink certain things, but
+          sometimes my insecurities and instincts just get the best of me. I am not saying this to justify my actions or
+          make excuses for myself. I just want you to understand that I genuinely struggle with these feelings,
+          especially when I see you giving other men attention that I perceive as a little too intimate. However, I
+          understand that my feelings do not give me the right to control you or make you feel restricted.</p>
+
+        <p>I also want to apologize for being controlling about what you wear. I should have supported you instead of
+          making you feel like you had to think twice about wearing something you liked. And I want you to know that I
+          never thought you were "igat" just because you wore those clothes. I was simply worried that some creepy men
+          might disrespect you or make you uncomfortable. But I understand that my fear should never become a reason to
+          dictate what you can or cannot wear.</p>
+
+        <p>And yes, of course I am proud of you. You look sexy, beautiful, and absolutely stunning. I hope you never
+          doubt that. But at the end of the day, I recognize that I was wrong in the way I handled things, and I take
+          responsibility for that. I am genuinely sorry for being controlling and for making you feel that way.</p>
+
+        <p>I want to become a better partner, not just through words and apologies, but through my actions as well. I
+          want to be someone you can feel safe, comfortable, respected, and loved with. Someone we can both be proud of.
+          I know that change takes time, but I promise to keep working on myself and to do better.</p>
+
+        <p class="modal-signoff">I love you, Honey.</p>
+      </div>
+
+      <button type="button" id="modal-action-btn" class="modal-action-btn">
+        <span class="btn-text">Forever & Always, Honey</span>
+        <span class="btn-sparkle" aria-hidden="true">💖</span>
+      </button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
